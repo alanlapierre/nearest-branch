@@ -3,4 +3,4 @@ spring:
     name: nearby-store
   data:
     mongodb:
-      uri: mongodb://rootuser:rootpass@localhost:27017/nearby-store?authSource=admin
+      uri: mongodb://rootuser:rootpass@localhost:27017/nearest-branch?authSource=admin
