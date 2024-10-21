@@ -108,6 +108,19 @@ Este endpoint permite crear una nueva sucursal proporcionando los datos necesari
   "longitud": 20.0
 }
 ```
+
+##### Ejemplo de solicitud
+
+```bash
+curl -X POST http://localhost:8080/api/sucursales \
+-H "Content-Type: application/json" \
+-d '{
+  "direccion": "Calle 123",
+  "latitud": 10.0,
+  "longitud": 20.0
+}'
+```
+
 ##### Ejemplo de respuesta exitosa (HTTP 200)
 
 ```json
@@ -126,3 +139,84 @@ Este endpoint permite crear una nueva sucursal proporcionando los datos necesari
   "message": "La dirección de la sucursal no puede estar vacía"
 }
 ```
+
+### 2. Obtener una sucursal por ID
+
+Este endpoint permite obtener los datos de una sucursal en base al ID de la misma.
+
+- **URL**: `/api/sucursales/{id}`
+- **Método HTTP**: `GET`
+- **Descripción**: Obtiene los detalles de una sucursal a partir de su ID.
+
+##### Ejemplo de solicitud
+
+```bash
+curl -X GET http://localhost:8080/api/sucursales/1
+```
+
+##### Ejemplo de respuesta exitosa (HTTP 200)
+
+```json
+{
+  "id": "1",
+  "direccion": "Calle 123",
+  "latitud": 10.0,
+  "longitud": 20.0
+}
+```
+##### Respuesta de error (HTTP 404 - Not Found)
+
+```json
+{
+  "timestamp": "2024-01-01T12:00:00",
+  "message": "Sucursal no encontrada"
+}
+```
+
+### 3. Obtener la sucursal más cercana
+
+Este endpoint permite obtener la sucursal más cercana a una ubicación específica (coordenadas de latitud y longitud).
+
+- **URL**: `/api/sucursales/cercana`
+- **Método HTTP**: `GET`
+- **Descripción**: Devuelve la sucursal más cercana en base a la latitud y longitud proporcionadas.
+
+##### Ejemplo de solicitud
+
+```bash
+curl -X GET "http://localhost:8080/api/sucursales/cercana?lat=10.0&lon=20.0"
+```
+##### Ejemplo de respuesta exitosa (HTTP 200)
+
+```json
+{
+  "id": "1",
+  "direccion": "Calle 123",
+  "latitud": 10.0,
+  "longitud": 20.0
+}
+```
+##### Respuesta de error (HTTP 404 - Not Found)
+
+```json
+{
+  "timestamp": "2024-01-01T12:00:00",
+  "message": "No se encontraron sucursales"
+}
+```
+---
+## Acerca del Autor
+
+Este proyecto fue desarrollado por **Alan Lapierre**.
+
+- [Blog](https://www.alanlapierre.com)
+- [LinkedIn](https://www.linkedin.com/in/alanlapierre)
+
+
+### ¡Gracias por tu interés!
+
+Esperamos que encuentres este proyecto útil y divertido de explorar. Si has llegado hasta aquí, ¡gracias por tomarte el tiempo de revisar el código y la documentación! 😄
+
+Recuerda que siempre es un buen momento para aprender algo nuevo, así que si tienes ideas, mejoras o simplemente quieres decir hola, siéntete libre de hacerlo.
+
+**¡Happy coding!** 🚀💻
